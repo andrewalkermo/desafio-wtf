@@ -72,7 +72,7 @@ class AtendimentoController{
     }
 }
 
-$postActions = array('create', 'update', 'changePassword', 'recoverPassword');
+$postActions = array('create', 'update', 'delete');
 
 if (isset($_POST['action']) && in_array($_POST['action'], $postActions)) {
     $action = $_POST['action'];

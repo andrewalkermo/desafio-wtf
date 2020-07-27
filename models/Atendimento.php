@@ -22,14 +22,13 @@
 
         public function create() {
             $connect = Connection::connect();
-            $stm = $connect->prepare('INSERT INTO `atendimento`(`id_atendimento`, `data_execucao`, `cliente`, `observacao`, `id_tipo_atendimento`, `id_tecnicos`)VALUES(:id_atendimento, :data_execucao, :cliente, :observacao, :id_tipo_atendimento, :id_tecnicos');
-            $stm->bindValue(':id_atendimento', $this->id_atendimento, PDO::PARAM_STR);
+            $stm = $connect->prepare('INSERT INTO `atendimento`(`data_execucao`, `cliente`, `observacao`, `id_tipo_atendimento`, `id_tecnicos`)VALUES(:data_execucao, :cliente, :observacao, :id_tipo_atendimento, :id_tecnicos)');
             $stm->bindValue(':data_execucao', $this->data_execucao, PDO::PARAM_STR);
             $stm->bindValue(':cliente', $this->cliente, PDO::PARAM_STR);
             $stm->bindValue(':observacao', $this->observacao, PDO::PARAM_STR);
             $stm->bindValue(':id_tipo_atendimento', $this->id_tipo_atendimento, PDO::PARAM_INT);
             $stm->bindValue(':id_tecnicos', $this->id_tecnicos, PDO::PARAM_INT);
-        
+            // var_dump($stm);die;
             return $stm->execute();
         }
 
